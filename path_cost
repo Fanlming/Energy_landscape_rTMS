@@ -1,0 +1,35 @@
+clc;clear all;close all
+load minimum_path_cost.mat
+%%
+% figure;imagesc(Base_Cost);colorbar('Limits',[-1.155,0]);colormap('hot')
+% figure;imagesc(F_Cost);colorbar('Limits',[-1.155,0]);colormap('hot')
+% figure;imagesc(O_Cost);colorbar('Limits',[-1.155,0]);colormap('hot')
+Base_s2d_energy = abs(sum(Base_Cost))';
+F_s2d_energy = abs(sum(F_Cost))';
+O_s2d_energy = abs(sum(O_Cost))';
+Nnum = 6;
+for i = 1:Nnum
+    for j = 1:Nnum
+        Base_path_length(i,j) = length(Base_Path{i,j});  
+        F_path_length(i,j) = length(F_Path{i,j});  
+        O_path_length(i,j) = length(O_Path{i,j});  
+        
+        
+    end
+end
+Base_path_length =Base_path_length-eye(6);
+F_path_length = F_path_length-eye(6);
+O_path_length = O_path_length-eye(6);
+m_base_path = sum(sum(Base_path_length))./30;
+m_F_path = sum(sum(F_path_length))./30;
+m_O_path = sum(sum(O_path_length))./30;
+
+
+
+ectorList = vectorList
+Base_exam = Base_Path{1,3};
+mfunc_ActivityMap(vectorList, Base_exam);
+F_exam = F_Path{1,3};
+mfunc_ActivityMap(vectorList, F_exam);
+O_exam = O_Path{1,3};
+mfunc_ActivityMap(vectorList, O_exam);
